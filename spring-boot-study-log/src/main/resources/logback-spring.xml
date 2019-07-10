@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+    <contextName>logback</contextName>
+    <!--输出到控制台-->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+            <pattern>%d{HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!--按天生成日志-->
+    <appender name="logFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <Prudent>true</Prudent>
+        <!-- 过滤器，只打印ERROR级别的日志 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--日志文件输出的文件名-->
+            <FileNamePattern>
+                applog/%d{yyyy-MM-dd}/%d{yyyy-MM-dd}.log
+            </FileNamePattern>
+            <!--日志文件保留天数-->
+            <MaxHistory>15</MaxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm:ss} -%msg%n
+            </Pattern>
+        </layout>
+    </appender>
+
+    <logger name="com.fishpro.log" additivity="false">
+        <appender-ref ref="console"/>
+        <appender-ref ref="logFile"/>
+    </logger>
+
+    <!-- 设置Spring&Hibernate日志输出级别 -->
+    <logger name="org.springframework" level="WARN"/>
+    <logger name="org.mybatis" level="WARN"/> 
+    <logger name="com.ibatis" level="DEBUG"/> 
+    <logger name="com.ibatis.common.jdbc.SimpleDataSource" level="DEBUG"/> 
+    <logger name="com.ibatis.common.jdbc.ScriptRunner" level="DEBUG"/> 
+    <logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" level="DEBUG"/>
+
+
+       
+    <logger name="java.sql.Connection" level="DEBUG"/>  
+    <logger name="java.sql.Statement" level="DEBUG"/> 
+    <logger name="java.sql.PreparedStatement" level="DEBUG"/> 
+    <logger name="com.ruidou.baoqian.mapper" level="DEBUG"/>
+
+    <!-- 开发环境下的日志配置 -->
+    <root level="error">
+        <appender-ref ref="console"/>
+        <appender-ref ref="logFile"/>
+    </root>
+</configuration>
