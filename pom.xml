@@ -11,5 +11,6 @@
 <modules>
     <module>spring-boot-study-helloworld</module>
     <module>spring-boot-study-log</module>
+    <module>spring-boot-study-thymeleaf</module>
 </modules>
 </project>
