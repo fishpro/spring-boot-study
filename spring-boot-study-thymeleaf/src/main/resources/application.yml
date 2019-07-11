@@ -1,0 +1,13 @@
+server:
+  port: 8083
+#thymelea模板配置
+spring:
+  thymeleaf:
+    #thymeleaf 所在路径
+    prefix: classpath:/templates/
+    #thymeleaf 后缀
+    suffix: .html
+    #thymeleaf 采用的标准
+    mode: HTML5
+    #thymeleaf 编码格式
+    encoding: UTF-8
