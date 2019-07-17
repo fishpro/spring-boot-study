@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户编辑页面</title>
+    <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.js"></script>
+</head>
+<body>
+<form id="form1">
+    <div> <input name="userId" id="userId"  placeholder="请输入userid" th:value=${user.userId}> </div>
+    <div> <input name="userName" id="userName"   placeholder="请输入username" th:value=${user.userName}></div>
+    <div> <input  type="button" value="新增" id="btnSave"/></div>
+</form>
+<script>
+    $(function () {
+
+        $("#btnSave").click(function () {
+            $.ajax({
+                cache: true,
+                type: "POST",
+                url: "/user/update",
+                data:$('#form1').serialize(),
+                dataType:"json",
+                async: false,
+                error: function (request) {
+                    console.log("Connection error");
+                },
+                success: function (data) {
+                    if (data.code == 0) {
+                        console.log("成功");
+                    } else {
+                        console.log("失败");
+                    }
+
+                }
+            });
+        });
+
+    });
+</script>
+</body>
+</html>

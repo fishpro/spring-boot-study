@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="title">
+
+</div>
+<div th:each="user :${list}">
+    用户ID：<span th:text="${user.userId}"></span>
+    用户名：<span th:text="${user.userName}"></span>
+</div>
+</body>
+</html>
