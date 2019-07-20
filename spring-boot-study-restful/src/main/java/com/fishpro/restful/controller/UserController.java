@@ -11,13 +11,14 @@ import java.util.List;
 /**
  * RESTful API 风格示例 对资源 user 进行操作
  * 本示例没有使用数据库，也没有使用 service 类来辅助完成，所有操作在本类中完成
+ * 请注意几天
+ *    1.RESTful 风格使用 HttpStatus 状态返回 GET PUT PATCH DELETE 通常返回 201 Create ，DELETE 还有时候返回 204 No Content
+ *    2.使用 RESTful 一定是要求具有幂等性，GET PUT PATCH DELETE 本身具有幂等性，但 POST 不具备，无论规则如何定义幂等性，需要根据业务来设计幂等性
+ *    3.RESTful 不是神丹妙药，实际应根据实际情况来设计接口
  * */
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
-
-
-
     /**
      * 模拟一组数据
      * */
@@ -47,6 +48,13 @@ public class UserController {
         return  list;
     }
 
+    /**
+     * 测试用 参数为 name
+     * */
+    @RequestMapping("/hello")
+    public String hello(String name){
+        return "Hello "+name;
+    }
 
     /**
      * SELECT 查询操作，返回一个JSON数组
@@ -77,7 +85,7 @@ public class UserController {
         List<UserDO> list= getData();
         UserDO userDO=null;
         for (UserDO user:list
-             ) {
+                ) {
             if(id.equals(user.getUserId().toString())){
                 userDO=user;
                 break;
@@ -90,6 +98,7 @@ public class UserController {
     /**
      * 新增一个用户对象
      * 非幂等
+     * 返回 201 HttpStatus.CREATED 对创建新资源的 POST 操作进行响应。应该带着指向新资源地址的 Location 头
      * */
     @PostMapping("/users")
     @ResponseStatus(HttpStatus.CREATED)
@@ -122,10 +131,11 @@ public class UserController {
     /**
      * 删除一个用户对象
      * 幂等性
+     * 返回 HttpStatus.NO_CONTENT 表示无返回内容
      * */
-    @DeleteMapping("/users")
+    @DeleteMapping("/users/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public Object deleteUser(@PathVariable("id") String id){
+    public void deleteUser(@PathVariable("id") String id){
         List<UserDO> list= getData();
         UserDO userDO=null;
         for (UserDO user:list
@@ -136,6 +146,6 @@ public class UserController {
                 break;
             }
         }
-        return  userDO;//返回被删除的对象
     }
 }
+
