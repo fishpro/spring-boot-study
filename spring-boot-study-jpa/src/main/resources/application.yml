@@ -1,0 +1,17 @@
+server:
+  port: 8086
+spring:
+  #通用的数据源配置
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/demo_test?useSSL=false&useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 123
+  jpa:
+    #这个参数是在建表的时候，将默认的存储引擎切换为 InnoDB 用的
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    #配置在日志中打印出执行的 SQL 语句信息。
+    show-sql: true
+    hibernate:
+      #配置指明在程序启动的时候要删除并且创建实体类对应的表
+      ddl-auto: create
