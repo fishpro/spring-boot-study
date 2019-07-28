@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>通过登录验证后跳转到此页面</title>
+</head>
+<body>
+    通过登录验证后跳转到此页面
+    <div>
+        <title>下面是链接不包括权限</title>
+    </div>
+    <div>
+        <a href="/article">前往文章页面</a>
+    </div>
+    <div>
+        <a href="/setting">前往设置页面</a>
+    </div>
+    <div>
+        <a href="/logout">退出</a>
+    </div>
+    <hr/>
+    <div>
+        <title style="color:red;">注意下面是包括权限的,第二个链接因为没有授权是不可见的</title>
+    </div>
+    <div shiro:hasPermission="app:article:article">
+        <a href="/article">前往文章页面</a>
+    </div>
+    <div shiro:hasPermission="app:setting:setting">
+        <a  href="/setting">前往设置页面</a>
+    </div>
+</body>
+</html>
