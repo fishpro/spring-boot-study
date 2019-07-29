@@ -3,6 +3,7 @@ package com.fishpro.shiro.controller;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.UnauthenticatedException;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.crypto.hash.Hash;
 import org.apache.shiro.subject.Subject;
@@ -44,11 +45,41 @@ public class UserController {
     public String setting(){
         return "setting";
     }
+
+    @GetMapping("/show")
+    @ResponseBody
+    public String show(){
+
+        Subject subject = SecurityUtils.getSubject();
+        String str="";
+        if(subject.hasRole("admin")){
+            str=str+"您拥有 admin 权限";
+        }else{
+            str=str+"您没有 admin 权限";
+        }
+        if(subject.hasRole("sale")){
+            str=str+"您拥有 sale 权限";
+        }
+        else{
+            str=str+"您没有 sale 权限";
+        }
+        try{
+            subject.checkPermission("app:setting:setting");
+            str=str+"您拥有 app:setting:setting 权限";
+
+        }catch (UnauthenticatedException ex){
+            str=str+"您没有 app:setting:setting 权限";
+        }
+        return  str;
+    }
+
+    //get /login 方法，对应前端 login.html 页面
     @GetMapping("/login")
     public String login(){
         return "login";
     }
 
+    //post /login 方法，对应登录提交接口
     @PostMapping("/login")
     @ResponseBody
     public Object loginsubmit(@RequestParam String userName,@RequestParam String password){
@@ -67,7 +98,6 @@ public class UserController {
             map.put("message","用户名或密码错误");
             return map;
         }
-
     }
 
 

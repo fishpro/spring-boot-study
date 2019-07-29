@@ -234,6 +234,10 @@ public class UserRealm extends AuthorizingRealm {
 ## 1.6 shiro 实现登录认证
 这里主要是显示 login.html 与 LoginController 
 
+
+![shiro 登录验证逻辑](https://www.cnblogs.com/images/cnblogs_com/fishpro/1453719/o_shiro1.png)
+
+## 1.6.1 登录 html 页面
 新增文件 resources/templates/login.html 表示登录页面，这里使用 jquery 来实现逻辑
 ```html
 <!DOCTYPE html>
@@ -285,6 +289,41 @@ public class UserRealm extends AuthorizingRealm {
 </body>
 </html>
 ```
+
+
+## 1.6.2 登录逻辑
+在 UserController中新增两个方法， 路由都是 /login，一个是get 一个是post，因为登录页面是不需要认证，所有两个路由都是 /login 的页面不需要进行认证就可以访问。
+```java
+//get /login 方法，对应前端 login.html 页面
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
+
+    //post /login 方法，对应登录提交接口
+    @PostMapping("/login")
+    @ResponseBody
+    public Object loginsubmit(@RequestParam String userName,@RequestParam String password){
+        Map<String,Object> map=new HashMap<>();
+        //把身份 useName 和 证明 password 封装成对象 UsernamePasswordToken
+        UsernamePasswordToken token=new UsernamePasswordToken(userName,password);
+        //获取当前的 subject
+        Subject subject = SecurityUtils.getSubject();
+        try{
+            subject.login(token);
+            map.put("status",0);
+            map.put("message","登录成功");
+            return map;
+        }catch (AuthenticationException e){
+            map.put("status",1);
+            map.put("message","用户名或密码错误");
+            return map;
+        }
+    }
+```
+
+
+
 ## 1.7 shiro 实现Controller层方法授权
 这里需要增加几个页面来实现这个功能
 ### 1.7.1 resources/templates/index.html 登陆成功后跳转的页面
@@ -413,18 +452,54 @@ public class UserController {
 ## 1.8 shiro 实现前端页面中授权
 我们使用了 Thymeleaf 作为前端的模板引擎，您也可以使用 JSP，FreeMarker 等引擎。Shiro 已经能够很好的在 Thymeleaf 中使用，如下代码我在首页中使用
 
+**如下代码，因为没有 app:setting:setting 权限所有【前往设置页面】不会显示**
+
 ```html
+<hr/>
+    <div>
+        <title style="color:red;">注意下面是包括权限的,第二个链接因为没有授权是不可见的</title>
+    </div>
+    <div shiro:hasPermission="app:article:article">
+        <a href="/article">前往文章页面</a>
+    </div>
+    <div shiro:hasPermission="app:setting:setting">
+        <a  href="/setting">前往设置页面</a>
+    </div>
+```
+
+## 1.9 shiro 在程序代码块中使用授权判断
+### 1.9.1 通过角色判断
+```java
+ Subject subject = SecurityUtils.getSubject();
+        String str="";
+        if(subject.hasRole("admin")){
+            str=str+"您拥有 admin 权限";
+        }else{
+            str=str+"您没有 admin 权限";
+        }
+        if(subject.hasRole("sale")){
+            str=str+"您拥有 sale 权限";
+        }
+        else{
+            str=str+"您没有 sale 权限";
+        }
+```
+
+### 1.9.2 通过权限判断
+注意这里是直接抛出异常，会被全局异常捕捉
+```java
+        Subject subject = SecurityUtils.getSubject();
+        try{
+            subject.checkPermission("app:setting:setting");
+            str=str+"您拥有 app:setting:setting 权限";
+
+        }catch (UnauthenticatedException ex){
+            str=str+"您没有 app:setting:setting 权限";
+        }
 
 ```
 
-**使用 shiro 可以有多种方式进行授权**
-|方式|注解|示例|
-|---|---|---|
-|验证是否登录|@RequiresAuthentication|@RequiresAuthentication|
-|是否记住我|@RequiresUser||
-|是否游客身份|@RequiresGuest|@RequiresGuest|
-|是否拥有角色|@RequiresRoles|@RequiresRoles("admin")|
-|是否拥有权限|@RequiresPermissions|@RequiresPermissions("perm")|
+
 
 **为什么我的注解没生效？** 
 
@@ -444,8 +519,10 @@ public class UserController {
     }
 ```
 
-## 1.9 登出/注销
+## 1.10 登出/注销
+
 调用 subject 的logout 方法进行注销
+
 ```java
 @GetMapping("/logout")
     String logout(HttpSession session, SessionStatus sessionStatus, Model model) {
@@ -457,7 +534,7 @@ public class UserController {
 
     }
 ```
-## 1.10 问题
+## 1.11 问题
 1. `@RequiresPermissions` 注解无效
 注解无效，没有走到注解，基本就是AOP拦截问题，需要在 ShiroConfig 配置中增加配置
 ```
@@ -515,3 +592,6 @@ shiro:hasPermission 标签应用在 thymeleaf ，由于涉及到两个框架，�
             <version>2.0.0</version>
         </dependency>
 ```
+
+
+[本项目源码下载](https://github.com/fishpro/spring-boot-study/tree/master/spring-boot-study-shiro)
