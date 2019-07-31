@@ -13,6 +13,7 @@ JSON Web Token（JWT） 他是一个用于 Web 身份验证的令牌。
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
 ```
 细心的你可能会发现字符串是有3个独立的字符串使用` . `号组合而成，前两个字符串是 Base64 编码，最后一个字符串是一个加密后的字符串。
+
 |序号|字符串|
 |---|---|
 |1|eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9|
