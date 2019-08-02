@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用 jwt 登录页面</title>
+</head>
+<body>
+<div>
+    <input id="userName" name="userName" value="">
+</div>
+<div>
+    <input id="password" name="password" value="">
+</div>
+<div>
+    <input type="button" id="btnSave"  value="登录">
+</div>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.js"></script>
+<script>
+    $(function() {
+        $("#btnSave").click(function () {
+            var username=$("#userName").val();
+            var password=$("#password").val();
+            $.ajax({
+                cache: true,
+                type: "POST",
+                url: "/authenticate",
+                contentType: "application/json;charset=UTF-8",
+                data:JSON.stringify({"username":username ,"password" : password}),
+                dataType: "json",
+                async: false,
+                error: function (request) {
+                    console.log("Connection error");
+                },
+                success: function (data) {
+                    //save token
+                    localStorage.setItem("token",data.token);
+
+
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

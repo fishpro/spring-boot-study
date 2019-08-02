@@ -1,0 +1,6 @@
+
+server:
+  port: 8086
+jwt:
+ #jwt 的秘钥
+  secret: javainuse
