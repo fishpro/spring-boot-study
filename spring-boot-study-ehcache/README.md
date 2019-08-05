@@ -2,6 +2,10 @@ Ehcache 小巧轻便、具备持久化机制，不用担心JVM和服务器重启
 
 本章讲解 Ehcache 在 Spring Boot 中的使用，
 
+
+[本项目源码下载](https://github.com/fishpro/spring-boot-study/tree/master/spring-boot-study-ehcache)
+
+
 # 1 Ehcache 简介
 
 ehcache 在 spring boot 中使用了一些注解，是哟合那个注解模式，有别于我们传统的写法，通常比如我们 javascript 中的
@@ -141,6 +145,9 @@ localStorage.getItem("key");
 
 上面介绍了 Ehcache 在 Spring Boot 中的注解的应用，这里我们相信编写一个示例说明具体的应用。
 
+
+[本项目源码下载](https://github.com/fishpro/spring-boot-study/tree/master/spring-boot-study-ehcache)
+
 ## 2.1 新建 Spring Boot Maven 示例工程项目
 注意：是用来 IDEA 开发工具
 1. File > New > Project，如下图选择 `Spring Initializr` 然后点击 【Next】下一步
@@ -175,7 +182,7 @@ localStorage.getItem("key");
         </dependency>
     </dependencies>
 ```
-# 3 配置 ehcache.xml
+## 2.3 配置 ehcache.xml
 在 src/main/resources/ehcache.xml 默认 spring boot 就会在 resources 目录下扫描到 ehcache 所以也不需要在 application.yml 中单独配置。
 
 ```xml
@@ -227,7 +234,7 @@ LRU（最近最少使用）。你可以设置为FIFO（先进先出）或是LFU�
 </ehcache>
 ```
 
-# 4 开启缓存
+## 2.4 开启缓存
 在 application 中开启缓存
 ```java
 // @EnableCaching 开启缓存
@@ -241,7 +248,7 @@ public class EhcacheApplication {
 
 }
 ```
-# 5 示例代码
+## 2.5 示例代码
 模拟一个增删改查来设置缓存示例，包括了
 - UserService 用户服务类
 - UserServiceImpl 用户服务实现类
@@ -345,17 +352,14 @@ public class UserController {
 ```
 
 
-
-
-# 6 运行效果
+## 2.6 运行效果
 右键 EhcacheApplication 选择 Run EhcacheApplication
 
 ![ehcache 运行示例](https://www.cnblogs.com/images/cnblogs_com/fishpro/1453719/o_ehcache1.jpg)
 
 
 
-
-# 7 遇到的问题
+## 2.7 遇到的问题
 Cannot find cache named 'users' 
 >java.lang.IllegalArgumentException: Cannot find cache named 'users' for Builder[public java.util.List com.fishpro.ehcache.service.impl.UserServiceImpl.list()] caches=[users] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false'
 
@@ -366,3 +370,6 @@ Cannot find cache named 'users'
 参考
 ------
 https://blog.csdn.net/dreamhai/article/details/80642010
+
+
+[本项目源码下载](https://github.com/fishpro/spring-boot-study/tree/master/spring-boot-study-ehcache)
