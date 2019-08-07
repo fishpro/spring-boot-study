@@ -18,21 +18,21 @@ public class UserController {
     @RequestMapping("/test")
     public  String test(){
         System.out.println("======set/get 方式演示===============================");
-        memcachedClient.set("FPCACHE",3*1000,"THIS IS TEST 这是测试");
+        memcachedClient.set("FPCACHE",3,"THIS IS TEST 这是测试");
         System.out.println("设置与读取 FPCACHE 值:"+memcachedClient.get("FPCACHE"));
 
-        memcachedClient.set("FPCACHE",3*1000,"使用SET添加到一个存在的值的缓存");
+        memcachedClient.set("FPCACHE",3,"使用SET添加到一个存在的值的缓存");
         System.out.println("再次读取 FPCACHE 值:"+memcachedClient.get("FPCACHE"));
 
         System.out.println("======add 方式演示===============================");
-        memcachedClient.add("FPCACHE",3*1000,"使用ADD添加到一个存在的值的缓存");
+        memcachedClient.add("FPCACHE",3,"使用ADD添加到一个存在的值的缓存");
         System.out.println("再次读取 FPCACHE 值:"+memcachedClient.get("FPCACHE"));
 
-        memcachedClient.add("FPCACHE2",3*1000,"使用ADD添加到新的缓存键FPCACHE2中");
+        memcachedClient.add("FPCACHE2",3,"使用ADD添加到新的缓存键FPCACHE2中");
         System.out.println("再次读取 FPCACHE2 值:"+memcachedClient.get("FPCACHE2"));
 
         System.out.println("======replace 方式演示===============================");
-        memcachedClient.replace("FPCACHE",3*1000,"使用Replace替换FPCACHE键对应的缓存值");
+        memcachedClient.replace("FPCACHE",3,"使用Replace替换FPCACHE键对应的缓存值");
         System.out.println("replace方式读取 FPCACHE 值:"+memcachedClient.get("FPCACHE"));
 
         try {
