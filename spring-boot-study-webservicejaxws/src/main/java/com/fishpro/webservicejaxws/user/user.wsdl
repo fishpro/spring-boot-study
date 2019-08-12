@@ -1,0 +1,295 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.youdomain.com/webservice" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="userService" targetNamespace="http://www.youdomain.com/webservice">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.youdomain.com/webservice" elementFormDefault="unqualified" targetNamespace="http://www.youdomain.com/webservice" version="1.0">
+
+  <xs:element name="batchRemove" type="tns:batchRemove"/>
+
+  <xs:element name="batchRemoveResponse" type="tns:batchRemoveResponse"/>
+
+  <xs:element name="count" type="tns:count"/>
+
+  <xs:element name="countResponse" type="tns:countResponse"/>
+
+  <xs:element name="getUserById" type="tns:getUserById"/>
+
+  <xs:element name="getUserByIdResponse" type="tns:getUserByIdResponse"/>
+
+  <xs:element name="getUsers" type="tns:getUsers"/>
+
+  <xs:element name="getUsersResponse" type="tns:getUsersResponse"/>
+
+  <xs:element name="remove" type="tns:remove"/>
+
+  <xs:element name="removeResponse" type="tns:removeResponse"/>
+
+  <xs:element name="save" type="tns:save"/>
+
+  <xs:element name="saveResponse" type="tns:saveResponse"/>
+
+  <xs:element name="update" type="tns:update"/>
+
+  <xs:element name="updateResponse" type="tns:updateResponse"/>
+
+  <xs:complexType name="update">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="user" type="tns:userDto"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="userDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="password" type="xs:string"/>
+      <xs:element minOccurs="0" name="sex" type="xs:int"/>
+      <xs:element minOccurs="0" name="userId" type="xs:int"/>
+      <xs:element minOccurs="0" name="userName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updateResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="count">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="countResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="save">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="user" type="tns:userDto"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="saveResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="remove">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="removeResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUserById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUserByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:userDto"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="batchRemove">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ids" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="batchRemoveResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUsers">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getUsersResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:userDto"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="countResponse">
+    <wsdl:part element="tns:countResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="update">
+    <wsdl:part element="tns:update" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="count">
+    <wsdl:part element="tns:count" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="save">
+    <wsdl:part element="tns:save" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeResponse">
+    <wsdl:part element="tns:removeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="remove">
+    <wsdl:part element="tns:remove" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUserById">
+    <wsdl:part element="tns:getUserById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="batchRemoveResponse">
+    <wsdl:part element="tns:batchRemoveResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUserByIdResponse">
+    <wsdl:part element="tns:getUserByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateResponse">
+    <wsdl:part element="tns:updateResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveResponse">
+    <wsdl:part element="tns:saveResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUsersResponse">
+    <wsdl:part element="tns:getUsersResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="batchRemove">
+    <wsdl:part element="tns:batchRemove" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUsers">
+    <wsdl:part element="tns:getUsers" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="userPortType">
+    <wsdl:operation name="update">
+      <wsdl:input message="tns:update" name="update">
+    </wsdl:input>
+      <wsdl:output message="tns:updateResponse" name="updateResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="count">
+      <wsdl:input message="tns:count" name="count">
+    </wsdl:input>
+      <wsdl:output message="tns:countResponse" name="countResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="save">
+      <wsdl:input message="tns:save" name="save">
+    </wsdl:input>
+      <wsdl:output message="tns:saveResponse" name="saveResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="remove">
+      <wsdl:input message="tns:remove" name="remove">
+    </wsdl:input>
+      <wsdl:output message="tns:removeResponse" name="removeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserById">
+      <wsdl:input message="tns:getUserById" name="getUserById">
+    </wsdl:input>
+      <wsdl:output message="tns:getUserByIdResponse" name="getUserByIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="batchRemove">
+      <wsdl:input message="tns:batchRemove" name="batchRemove">
+    </wsdl:input>
+      <wsdl:output message="tns:batchRemoveResponse" name="batchRemoveResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUsers">
+      <wsdl:input message="tns:getUsers" name="getUsers">
+    </wsdl:input>
+      <wsdl:output message="tns:getUsersResponse" name="getUsersResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="userServiceSoapBinding" type="tns:userPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="update">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="update">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="save">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="save">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="saveResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="count">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="count">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="countResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="remove">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="remove">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="removeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getUserById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUserByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="batchRemove">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="batchRemove">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="batchRemoveResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUsers">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getUsers">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUsersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="userService">
+    <wsdl:port binding="tns:userServiceSoapBinding" name="userPortName">
+      <soap:address location="http://localhost:8080/ws/user"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
