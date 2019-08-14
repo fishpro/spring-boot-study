@@ -1,13 +1,20 @@
 package com.fishpro.json;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fishpro.json.dto.Address;
 import com.fishpro.json.dto.User;
+import com.fishpro.json.util.Person;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @SpringBootApplication
@@ -39,6 +46,38 @@ public class JsonApplication {
         }catch (Exception e){
             e.printStackTrace();
         }
+
+        //测试 Fastjson 序列化
+        System.out.println("测试 Fastjson 序列化");
+        System.out.println(JSON.toJSONString(user));
+
+        //测试 Fastjson 反序列化
+        System.out.println("测试 Fastjson 反序列化");
+        User user3 = JSON.parseObject(json,User.class);
+        System.out.println(user3);
+
+        System.out.println("测试 Fastjson person 注解");
+        Person person=new Person(100,"dashen",new Date());
+        System.out.println(JSON.toJSONString(person));
+
+        Person person2=new Person(98,"dashen2",new Date());
+        Person person3=new Person(88,"dashen3",new Date());
+        List<Person> personList=new ArrayList<>();
+        personList.add(person);
+        personList.add(person2);
+        personList.add(person3);
+        System.out.println(JSON.toJSONString(personList, SerializerFeature.BeanToArray));
+
+        System.out.println("测试 Fastjson 生成 json");
+        JSONArray jsonArray = new JSONArray();
+        for (int i = 0; i < 2; i++) {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("AGE", 10);
+            jsonObject.put("FULL NAME", "Doe " + i);
+            jsonObject.put("DATE OF BIRTH", "2019/08/12 12:12:12");
+            jsonArray.add(jsonObject);
+        }
+        System.out.println(jsonArray.toJSONString());
 
     }
 
