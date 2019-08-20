@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<hr/>
+<div>单位文件</div>
+<form enctype="multipart/form-data" method="post" action="/upload">
+    文件 <input type="file" name="file"/>
+    <input type="submit" value="上传"/>
+</form>
+<hr/>
+<div>多文件</div>
+
+<form enctype="multipart/form-data" method="post" action="/uploads">
+    <p>文件1<input type="file" name="files"/></p>
+    <p>文件2<input type="file" name="files"/></p>
+    <p>文件3<input type="file" name="files"/></p>
+    <p><input type="submit" value="上传"/></p>
+</form>
+</body>
+</html>
