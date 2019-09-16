@@ -43,7 +43,7 @@
 - [Spring Boot 使用 Aop 实现日志全局拦截](https://www.cnblogs.com/fishpro/p/11183086.html)
 - Spring Boot 中的日期处理
 - [Spring Boot Thymeleaf 模板引擎的使用](https://www.cnblogs.com/fishpro/p/11175391.html)
-- [Spring Boot FreeMarker 使用教程]()https://www.cnblogs.com/fishpro/p/spring-boot-study-freemarker.html
+- [Spring Boot FreeMarker 使用教程](https://www.cnblogs.com/fishpro/p/spring-boot-study-freemarker.html)
 - SpringBoot使用模板 Velocity（Spring Boot 已经不支持 Velocity了
 - [Spring Boot 数据库应用 JDBC 使用教程](https://www.cnblogs.com/fishpro/p/spring-boot-study-jdbc.html)
 - [Spring Boot 数据库应用 Mybatis使用教程](https://www.cnblogs.com/fishpro/p/spring-boot-study-mybatis.html)
@@ -66,6 +66,3 @@
 - [Spring Boot 使用 JAX-WS 调用 WebService 服务](https://www.cnblogs.com/fishpro/p/spring-boot-study-webservicejaxws.html)
 - [Spring Boot Json应用 JackJson FastJson](https://www.cnblogs.com/fishpro/p/spring-boot-study-jackjson.html)
 - [Spring Boot 使用 Dom4j XStream 操作 Xml](https://www.cnblogs.com/fishpro/p/spring-boot-study-xml.html)
-
-
- 
