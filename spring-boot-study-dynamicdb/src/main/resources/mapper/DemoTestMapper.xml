@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fishpro.dynamicdb.dao.DemoTestDao">
+
+	<select id="get" resultType="com.fishpro.dynamicdb.domain.DemoTestDO">
+		select `id`,`name`,`status`,`is_deleted`,`create_time`,`create_user_id`,`age`,`content`,`body`,`title` from demo_test where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.fishpro.dynamicdb.domain.DemoTestDO">
+		select `id`,`name`,`status`,`is_deleted`,`create_time`,`create_user_id`,`age`,`content`,`body`,`title` from demo_test
+        <where>  
+		  		  <if test="id != null   and id != '-1' " > and id = #{id} </if>
+		  		  <if test="name != null  and name != '' " > and name = #{name} </if>
+		  		  <if test="status != null   and status != '-1' " > and status = #{status} </if>
+		  		  <if test="isDeleted != null   and isDeleted != '-1' " > and is_deleted = #{isDeleted} </if>
+		  		  <if test="createTime != null  and createTime != '' " > and create_time = #{createTime} </if>
+		  		  <if test="createUserId != null   and createUserId != '-1' " > and create_user_id = #{createUserId} </if>
+		  		  <if test="age != null   and age != '-1' " > and age = #{age} </if>
+		  		  <if test="content != null  and content != '' " > and content = #{content} </if>
+		  		  <if test="body != null  and body != '' " > and body = #{body} </if>
+		  		  <if test="title != null  and title != '' " > and title = #{title} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from demo_test
+		 <where>  
+		  		  <if test="id != null   and id != '-1'  " > and id = #{id} </if>
+		  		  <if test="name != null  and name != ''  " > and name = #{name} </if>
+		  		  <if test="status != null   and status != '-1'  " > and status = #{status} </if>
+		  		  <if test="isDeleted != null   and isDeleted != '-1'  " > and is_deleted = #{isDeleted} </if>
+		  		  <if test="createTime != null  and createTime != ''  " > and create_time = #{createTime} </if>
+		  		  <if test="createUserId != null   and createUserId != '-1'  " > and create_user_id = #{createUserId} </if>
+		  		  <if test="age != null   and age != '-1'  " > and age = #{age} </if>
+		  		  <if test="content != null  and content != ''  " > and content = #{content} </if>
+		  		  <if test="body != null  and body != ''  " > and body = #{body} </if>
+		  		  <if test="title != null  and title != ''  " > and title = #{title} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.fishpro.dynamicdb.domain.DemoTestDO">
+		insert into demo_test
+		(
+			`id`, 
+			`name`, 
+			`status`, 
+			`is_deleted`, 
+			`create_time`, 
+			`create_user_id`, 
+			`age`, 
+			`content`, 
+			`body`, 
+			`title`
+		)
+		values
+		(
+			#{id}, 
+			#{name}, 
+			#{status}, 
+			#{isDeleted}, 
+			#{createTime}, 
+			#{createUserId}, 
+			#{age}, 
+			#{content}, 
+			#{body}, 
+			#{title}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.fishpro.dynamicdb.domain.DemoTestDO">
+		update demo_test 
+		<set>
+			<if test="name != null">`name` = #{name}, </if>
+			<if test="status != null">`status` = #{status}, </if>
+			<if test="isDeleted != null">`is_deleted` = #{isDeleted}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="createUserId != null">`create_user_id` = #{createUserId}, </if>
+			<if test="age != null">`age` = #{age}, </if>
+			<if test="content != null">`content` = #{content}, </if>
+			<if test="body != null">`body` = #{body}, </if>
+			<if test="title != null">`title` = #{title}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from demo_test where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from demo_test where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>
