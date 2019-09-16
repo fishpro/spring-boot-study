@@ -1,0 +1,8 @@
+ ____  __  ____  _  _  ____  ____   __
+(  __)(  )/ ___)/ )( \(  _ \(  _ \ /  \
+ ) _)  )( \___ \) __ ( ) __/ )   /(  O )
+(__)  (__)(____/\_)(_/(__)  (__\_) \__/
+
+${AnsiColor.BRIGHT_RED}
+Application Version: ${application.version}${application.formatted-version}
+Spring Boot Version: ${spring-boot.version}${spring-boot.formatted-version}
