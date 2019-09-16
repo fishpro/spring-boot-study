@@ -32,6 +32,7 @@
 
 - [Spring Boot 多环境配置](https://www.cnblogs.com/fishpro/p/11154872.html)
 - Spring Boot 热部署
+- [Spring Boot 自定义 Banner](https://www.cnblogs.com/fishpro/p/spring-boot-study-banner.html)
 - Spring Boot 的5种生产环境部署方式
 - [Spring Boot 配置文件和命令行配置](https://www.cnblogs.com/fishpro/p/spring-boot-study-cfg.html)
 - [Spring Boot @Controller @RestController 使用教程](https://www.cnblogs.com/fishpro/p/spring-boot-study-restcontroller.html)
@@ -48,7 +49,7 @@
 - [Spring Boot 数据库应用 JDBC 使用教程](https://www.cnblogs.com/fishpro/p/spring-boot-study-jdbc.html)
 - [Spring Boot 数据库应用 Mybatis使用教程](https://www.cnblogs.com/fishpro/p/spring-boot-study-mybatis.html)
 - [Spring Boot 数据库应用 使用Jpa使用教程](https://www.cnblogs.com/fishpro/p/spring-boot-study-jpa.html)
-- Spring Boot 数据库应用 动态数据源
+- [Spring Boot 数据库应用 动态数据源](https://www.cnblogs.com/fishpro/p/spring-boot-study-dynamicdb.html)
 - [Spring Boot 权限应用 使用Shiro](https://www.cnblogs.com/fishpro/p/spring-boot-study-study.html)
 - [Spring Boot 权限应用 使用Spring Security](https://www.cnblogs.com/fishpro/p/spring-boot-study-securing.html)
 - [Spring Boot 权限应用 使用Jwt](https://www.cnblogs.com/fishpro/p/spring-boot-study-jwt.html)
