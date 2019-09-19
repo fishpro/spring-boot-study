@@ -2,15 +2,43 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-<modelVersion>4.0.0</modelVersion>
-<groupId>com.fishpro</groupId>
-<artifactId>springstudy</artifactId>
-<version>1.0-SNAPSHOT</version>
-<packaging>pom</packaging>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.fishpro</groupId>
+    <artifactId>springstudy</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-<modules>
-    <module>spring-boot-study-helloworld</module>
-    <module>spring-boot-study-log</module>
-    <module>spring-boot-study-thymeleaf</module>
-</modules>
+    <modules>
+        <module>spring-boot-study-helloworld</module>
+        <module>spring-boot-study-log</module>
+        <module>spring-boot-study-thymeleaf</module>
+        <module>spring-boot-study-throwable</module>
+        <module>spring-boot-study-restful</module>
+        <module>spring-boot-study-restcontroller</module>
+        <module>spring-boot-study-swagger2</module>
+        <module>spring-boot-study-resttest</module>
+        <module>spring-boot-study-freemarker</module>
+        <module>spring-boot-study-jdbc</module>
+        <module>spring-boot-study-mybatis</module>
+        <module>spring-boot-study-jpa</module>
+        <module>spring-boot-study-securing</module>
+        <module>spring-boot-study-jwt</module>
+        <module>spring-boot-study-oauthdemo</module>
+        <module>spring-boot-study-ehcache</module>
+        <module>spring-boot-study-redis</module>
+        <module>spring-boot-study-memcached</module>
+        <module>spring-boot-study-quartz</module>
+        <module>spring-boot-study-quartzdb</module>
+        <module>spring-boot-study-sendemail</module>
+        <module>spring-boot-study-ftpclient</module>
+        <module>spring-boot-study-httpclient</module>
+        <module>spring-boot-study-webservice</module>
+        <module>spring-boot-study-webserviceclient</module>
+        <module>spring-boot-study-webservicejaxws</module>
+        <module>spring-boot-study-xmldom4j</module>
+        <module>spring-boot-study-json</module>
+        <module>spring-boot-study-banner</module>
+        <module>spring-boot-study-hotstart</module>
+
+    </modules>
 </project>
