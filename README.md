@@ -1,3 +1,4 @@
+最近上来看了下，还有兄弟在看这个教程，不胜荣幸，我最近上 github 的实际不多，有问题请加微信号 fishpro 或 QQ 502086
 # 为什么要写 Spring Boot 系列文章
 
 好记性不如烂笔头，学习 Spring Boot 一定要自己多练练，并能够把他记录下来，当有需要的时候，可以查看自己编写功能教程，能够很快获取相关代码，使用到项目中。
@@ -11,7 +12,6 @@
 # Spring Boot 知识图谱-入门教程目录
 
 本系列文章一般都是一个知识点一个独立的项目源码，综合应用可能包含多个知识点，比如动态数据源切换技术本身包括 Aop、注解、数据库访问、连接池。
-
 
 ![Spring Boot 2.0](https://img.shields.io/badge/Spring%20Boot-2.0-brightgreen.svg)
 ![Mysql 5.6](https://img.shields.io/badge/Mysql-5.6-blue.svg)
@@ -75,7 +75,7 @@
 - [Spring Boot 权限应用 使用Shiro](https://www.cnblogs.com/fishpro/p/spring-boot-study-study.html)
 - [Spring Boot 权限应用 使用Spring Security](https://www.cnblogs.com/fishpro/p/spring-boot-study-securing.html)
 - [Spring Boot 权限应用 使用Jwt](https://www.cnblogs.com/fishpro/p/spring-boot-study-jwt.html)
-
+- [Spring Boot Shiro 整合验证码]
 
 ## Spring Boot 常用操作
 
@@ -95,3 +95,4 @@
 
 - [Spring Boot 利用 nginx 实现生产环境的伪热更新](https://www.cnblogs.com/fishpro/p/spring-boot-study-hotstart.html)
 - [Spring Boot 多站点利用 Redis 实现 Session 共享](https://www.cnblogs.com/fishpro/p/spring-boot-study-sharedsession.html)
+
