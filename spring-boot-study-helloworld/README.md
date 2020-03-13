@@ -9,14 +9,12 @@ Spring Boot 快速入门（Spring Boot 2.0及以上）
 2. 配置Pom.xml文件
 3. 编写示例代码
 4. 编写测试代码
-
 5. 运行和调试
 6. 打包发布
 
 本文源码下载 Github-spring-boot-study-helloword
 
  
-
 # 1 Spring Boot 是什么 
 Spring Boot 是Spring 家族成员之一
 
@@ -26,7 +24,7 @@ Spring Boot 是Spring 家族成员之一
 > 为所有的Spring开发提供一个从根本上更快的和广泛使用的入门经验 开箱即用，但你可以通过不采用默认设置来摆脱这种方式
 > 提供一系列大型项目常用的非功能性特征 绝对不需要代码生成及XML配置
 
- 
+
 
 # 2 Spring Boot 有什么优点
 以下谈到个人认为的几点
@@ -62,7 +60,6 @@ Spring Boot 是Spring 家族成员之一
 ![在这里插入图片描述](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWcyMDE4LmNuYmxvZ3MuY29tL2Jsb2cvNjY0MTk3LzIwMTkwNC82NjQxOTctMjAxOTA0MDcyMjUxMzc0MzYtMzgxNjg3Mzc4LnBuZw?x-oss-process=image/format,png)
  
 
- 
 
 如上图一些英文的含义
 
@@ -72,7 +69,6 @@ Spring Boot 是Spring 家族成员之一
 
 `Dependencies`：依赖,输入 web，选择 web
 
- 
 
 例如公司名称：baidu，项目名 peach 那么 `groupId=com.baidu ` `artifactId=peach ` 最终在java项目的基本包名为 com.baidu.peach。当然groupId也可以是com.baidu.look 这种形式，完全有开发者自己定义。
 
