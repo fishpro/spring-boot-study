@@ -14,13 +14,13 @@
 # 1 准备数据库
 mysql 5.6+ 数据库
 
-|字段|类型|主键|说明|
-|--|--|--|---|
-|id|int|是|自动编号|
-|user_name|varchar(100)|否|用户名|
-|password|varchar(255)|否|密码|
-|last_login_time|date|否|最近登录时间|
-|sex|tinyint|否|性别 0男 1女 2其他|
+字段 | 类型 | 主键 | 说明
+---|--- | ---|---
+id|int|是|自动编号
+user_name|varchar(100)|否|用户名
+password|varchar(255)|否|密码
+last_login_time|date|否|最近登录时间
+sex|tinyint|否|性别 0男 1女 2其他
 
 ```sql
 
