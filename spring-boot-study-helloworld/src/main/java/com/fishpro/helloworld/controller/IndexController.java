@@ -1,6 +1,6 @@
 package com.fishpro.helloworld.controller;
 
-import com.fishpro.helloworld.service.MyService;
+//import com.fishpro.helloworld.service.MyService;  // 用于演示多模块
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,10 +15,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/hello")
 @RestController
 public class IndexController {
-    @Autowired
-    MyService myService;
+    // 下面代码是演示 多模块使用 在 pom.xml 中开启
+//    @Autowired
+//    MyService myService;
     @GetMapping("/say")
     public String say(){
-        return  myService.message();
+        return "Hello World";
+        /**
+         * 下面代码是演示 多模块使用 在 pom.xml 中开启
+         * <dependency>
+         * 			<groupId>com.fishpro.helloworld</groupId>
+         * 			<artifactId>service</artifactId>
+         * 			<version>0.0.1-SNAPSHOT</version>
+         * 		</dependency>
+         * */
+//        return  myService.message();
     }
 }

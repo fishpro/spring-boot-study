@@ -1,22 +1,26 @@
 @[TOC](Spring Boot 快速入门 Helloworld 示例)
 
 **本文重点**
-Spring Boot 快速入门（Spring Boot 2.0及以上）
+`Spring Boot` 快速入门（`Spring Boot `2.0及以上）
 
-如何使用Spring Boot 快速入门 快速创建HelloWorld 项目，主要涉及到
+如何使用 `Spring Boot `快速入门 快速创建 `HelloWorld` 项目，主要涉及到
 
 1. 创建(生成）一个Spring Boot标准项目
 2. 配置Pom.xml文件
 3. 编写示例代码
 4. 编写测试代码
+
 5. 运行和调试
 6. 打包发布
 
-本文源码下载 Github-spring-boot-study-helloword
+**源码下载**
+ 本文源码下载 [Github-spring-boot-study-helloword](https://github.com/fishpro/spring-boot-study/tree/master/spring-boot-study-helloworld)
 
+本文首次在博客园发布，如遇到图片打不开的情况，请移步到[博客园浏览此文章](https://www.cnblogs.com/fishpro/p/spring-boot-study-helloworld.html)。
  
+
 # 1 Spring Boot 是什么 
-Spring Boot 是Spring 家族成员之一
+`Spring Boot ` 是 `Spring` 家族成员之一
 
 > Spring Boot 是由Pivotal团队提供的全新框架，其设计目的是用来简化新Spring应用的初始搭建以及开发过程。
 > 该框架使用了特定的方式来进行配置，从而使开发人员不再需要定义样板化的配置。下面摘自spring boot中文文档
@@ -24,7 +28,7 @@ Spring Boot 是Spring 家族成员之一
 > 为所有的Spring开发提供一个从根本上更快的和广泛使用的入门经验 开箱即用，但你可以通过不采用默认设置来摆脱这种方式
 > 提供一系列大型项目常用的非功能性特征 绝对不需要代码生成及XML配置
 
-
+ 
 
 # 2 Spring Boot 有什么优点
 以下谈到个人认为的几点
@@ -35,10 +39,10 @@ Spring Boot 是Spring 家族成员之一
 
 
 # 3 Spring Boot快速入门HelloWord
-一般SpringBoot开发的步骤包括
+一般 `SpringBoot` 开发的步骤包括
 
-1. 生成一个Spring Boot项目
-2. 配置Pom.xml
+1. 生成一个 `Spring Boot` 项目
+2. 配置 `Pom.xml`
 3. 编辑代码
 4. 编写测试代码
 5. 运行
@@ -49,26 +53,24 @@ Spring Boot 是Spring 家族成员之一
 ## 3.1. 生成一个Spring Boot项目
 这里我们介绍 在浏览器中实现一个 `http://localhost:8999/hello/say web` 程序。这里使用 IntelliJ IDEA  作为IDE环境来编译。也可以使用其他IDE。
 
-我们一般采用从IDEA创建Spring Boot项目，见1.2.
+我们一般采用从 `IDEA` 创建 `Spring Boot` 项目，见1.2.
 
 ### 3.1.1 使用start.spring.io创建项目
-1. 打开https://start.spring.io/
+1. 打开 [`https://start.spring.io/`](https://start.spring.io/)
 
-2. 选择构建工具 Maven Project、Java、Spring Boot 版本 2.1.4 (注意这里文档版本是2.1.4，但在下面的实践中2.1.4本地的mvn有问题，后面换成了2.0.0) 、填写Group、Articfact 及一些工程基本信息，可参考下图所示：
+2. 选择构建工具 `Maven Project`、`Java`、`Spring Boot ` 版本 2.1.4 (注意这里文档版本是2.1.4，但在下面的实践中2.1.4本地的mvn有问题，后面换成了2.0.0) 、填写`Group`、`Articfact` 及一些工程基本信息，可参考下图所示：
 
 
 ![在这里插入图片描述](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWcyMDE4LmNuYmxvZ3MuY29tL2Jsb2cvNjY0MTk3LzIwMTkwNC82NjQxOTctMjAxOTA0MDcyMjUxMzc0MzYtMzgxNjg3Mzc4LnBuZw?x-oss-process=image/format,png)
- 
-
-
 如上图一些英文的含义
 
 `groupId`：`groupId` 分为几个字段，例如 `com.companyname `，前面的 com 叫【域】，后面的是你自己起的域名。这里是 com.fishpro
 
-`artifactId`：`artifactId` 一般是项目名或者模块名。这里是 springstudy
+`artifactId`：`artifactId` 一般是项目名或者模块名。这里是 `springstudy`
 
 `Dependencies`：依赖,输入 web，选择 web
 
+ 
 
 例如公司名称：baidu，项目名 peach 那么 `groupId=com.baidu ` `artifactId=peach ` 最终在java项目的基本包名为 com.baidu.peach。当然groupId也可以是com.baidu.look 这种形式，完全有开发者自己定义。
 
@@ -78,7 +80,7 @@ Spring Boot 是Spring 家族成员之一
 
 3.  点击绿色按钮【**Generate Project**】生成项目，浏览器则自动下载项目，我命名的是springhello，那么下载的是springhello.zip
 
-4. 如下图，下载的位 maven 项目结构的 java 项目，使用 idea 开发工具打开这个文件夹，则会自动加载maven项目。
+4. 如下图，下载的位 `maven` 项目结构的 `java` 项目，使用 `idea` 开发工具打开这个文件夹，则会自动加载 `maven` 项目。
 
 ![在这里插入图片描述](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWcyMDE4LmNuYmxvZ3MuY29tL2Jsb2cvNjY0MTk3LzIwMTkwNC82NjQxOTctMjAxOTA0MDYxMzUxNDE1NTUtNjY3NzcxNjA4LnBuZw?x-oss-process=image/format,png)
 
@@ -90,7 +92,7 @@ Spring Boot 是Spring 家族成员之一
 ![在这里插入图片描述](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWcyMDE4LmNuYmxvZ3MuY29tL2Jsb2cvNjY0MTk3LzIwMTkwNC82NjQxOTctMjAxOTA0MDYxMzU2NDYxMDktMTM0NTg2NTIyMy5wbmc?x-oss-process=image/format,png)
  
 
-5. IDEA 导入Spring Boot 的项目结构，截图如下：
+5. IDEA 导入 `Spring Boot ` 的项目结构，截图如下：
 
 ![在这里插入图片描述](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWcyMDE4LmNuYmxvZ3MuY29tL2Jsb2cvNjY0MTk3LzIwMTkwNC82NjQxOTctMjAxOTA0MDYxNzU1MzU1NTYtMTYyMTY5NTIyMi5wbmc?x-oss-process=image/format,png)
 
@@ -158,11 +160,11 @@ artifactId=springstudy
  
 
 # 2.配置Pom.xml
-注意如果生成项目的时候没有设置Dependencies，选择web，那么这里要在Pom.xml中设置，Pom.xml设置依赖也非常的简单，直接把 <dependency></dependency>的节点拷贝到pom依赖节点中即可。
+注意如果生成项目的时候没有设置 `Dependencies`，选择web，那么这里要在 `Pom.xml` 中设置，`Pom.xml` 设置依赖也非常的简单，直接把 `<dependency></dependency>` 的节点拷贝到pom依赖节点中即可。
 
-Pom.xml属于maven项目结构的项目依赖项配置文件，主要管理第三方包的引用。
+`Pom.xml` 属于 `maven` 项目结构的项目依赖项配置文件，主要管理第三方包的引用。
 
-默认项目配置了spring-boot-starter和spring-boot-starter-test ，配置如下
+默认项目配置了`spring-boot-starter` 和 `spring-boot-starter-test` ，配置如下
 
 ```yaml
 <dependencies>
@@ -181,7 +183,7 @@ Pom.xml属于maven项目结构的项目依赖项配置文件，主要管理第�
 
 因为示例项目是web项目所以需要引入web模块，在dependency下增加节点，增加后如下：
 
-```yaml
+```yml
 <dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-web</artifactId>
@@ -214,16 +216,16 @@ Inspects a Maven model for resolution problems.
 ## 3.1 Web项目的常用目录结构
 通常，我们使用三层结构来编写。
 
-应用层（Controller）、服务层（Service）、数据层（Dao）
+应用层（`Controller`）、服务层（`Service`）、数据层（`Dao`）
 
 我们也增加对应的包目录。
 
 ## 3.2 增加Controller包
-1. 在本示例中，右键springstudy包名，新建包名 controller (注意一般是消息)
+1. 在本示例中，右键springstudy包名，新建包名 `controller` (注意一般是消息)
 
-2. 在controller下新建HelloWorldController.java (注意首字母大写)
+2. 在controller下新建 `HelloWorldController.java`  (注意首字母大写)
 
-3. 在HelloWorldController中增加java代码
+3. 在 `HelloWorldController` 中增加 `java` 代码
 
 ```java
 @RestController
@@ -238,9 +240,9 @@ public class HelloWorldController {
 　　
 ## 3.3 更改Web端口
 
-因我的系统端口默认8080倍nginx占领了，我把本次项目的启动端口改为8999
+因我的系统端口默认 `8080` 倍 `nginx` 占领了，我把本次项目的启动端口改为 `8999`
 
-在 resources\application.properties 中设置（注意有的网络教程中是 application.yml 其实这是另一种配置文件格式，就想json和xml 只是格式不同，功能作用一样）
+在 `resources\application.properties`  中设置（注意有的网络教程中是 `application.yml`  其实这是另一种配置文件格式，就想json和xml 只是格式不同，功能作用一样）
  
 ```bash
 #设置端口号
@@ -250,11 +252,11 @@ server.port=8999
 　　 
 
 # 4.编写测试代码
-测试代码在 src\test\java下面编写
+测试代码在 `src\test\java` 下面编写
 
-1. 在本示例中，右键 src\test\java\com\fishpro\springstudy包名，新建包名 controller (注意一般是消息)
-2. 在controller下新建HelloWorldControllerTests.java (注意对应于main下，一般后缀Tests)
-3. 在HelloWorldControllerTests中增加java代码
+1. 在本示例中，右键 `src\test\java\com\fishpro\springstudy` 包名，新建包名 `controller ` (注意一般是消息)
+2. 在 `controller` 下新建 `HelloWorldControllerTests.java`  (注意对应于main下，一般后缀Tests)
+3. 在 `HelloWorldControllerTests` 中增加 `java` 代码
 
 ```java
 
@@ -307,14 +309,14 @@ Run>Debug 'SpringstudyApplication'
 ```
  ![在这里插入图片描述](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWcyMDE4LmNuYmxvZ3MuY29tL2Jsb2cvNjY0MTk3LzIwMTkwNC82NjQxOTctMjAxOTA0MDcyMzEyMzUzOTAtMTc1NDg3ODgwOS5wbmc?x-oss-process=image/format,png)
 
-浏览器输入 http://localhost:8999/hello/say
+浏览器输入 `http://localhost:8999/hello/say` 注意示例代码中的端口号可能不一致。
 
 
 
  
 
 ## 5.2 运行测试用例
-右键 `HelloWorldControllerTests.java` 选择 Run 'HelloWorldControllerTests' with Coverage
+右键 `HelloWorldControllerTests.java` 选择 Run 'HelloWorldControllerTests' with Coverage。注意示例代码中的端口号可能不一致。
 
  ![在这里插入图片描述](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWcyMDE4LmNuYmxvZ3MuY29tL2Jsb2cvNjY0MTk3LzIwMTkwNC82NjQxOTctMjAxOTA0MDcwOTU4MTAzNjEtMTQ0ODQ3OTQ2My5wbmc?x-oss-process=image/format,png)
 
@@ -323,7 +325,7 @@ Run>Debug 'SpringstudyApplication'
 # 6.打包发布
 通常我们一jar方式打包发布，war方式用于单独的发布到已有的tomcat web服务器中，以后的实践中再讲。
 
-1. 选择 View> Tool Windows>Terminal
+1. 选择 `View`> `Tool Windows`>`Terminal`
 
 2. 输入命令
 
@@ -365,7 +367,7 @@ server.port=8999
 
 　　
 
-源码下载
+**源码下载**
  本文源码下载 [Github-spring-boot-study-helloword](https://github.com/fishpro/spring-boot-study/tree/master/spring-boot-study-helloworld)
 
  
