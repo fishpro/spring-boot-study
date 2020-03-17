@@ -4,6 +4,7 @@
 
 我们在使用 Gson 的时候必须先移除 Spring 自带的 jackson。
 
+[本项目源代码下载](https://github.com/fishpro/spring-boot-study/tree/master/spring-boot-study-gsondemo)
 
 
 # 1 新建 Spring Boot Maven 示例工程项目
@@ -377,6 +378,10 @@ String 类型：String
 com.fishpro.gsondemo.dto.User@ca30ffa
 
 ```
+
+
+[本项目源代码下载](https://github.com/fishpro/spring-boot-study/tree/master/spring-boot-study-gsondemo)
+ 
 
 本文参考
 - https://www.leveluplunch.com/java/tutorials/023-configure-integrate-gson-spring-boot/
