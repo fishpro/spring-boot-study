@@ -1,6 +1,8 @@
 Spring Boot  的便捷，无出其右，仍然是三部曲，创建springboot 项目，配置项目，编写示例代码。
 安装 Kafka 测试环境请参加： [https://blog.csdn.net/fishpro/article/details/105761986](https://blog.csdn.net/fishpro/article/details/105761986)
 
+本示例代码[https://github.com/fishpro/spring-boot-study/tree/master/spring-boot-study-kafka](https://github.com/fishpro/spring-boot-study/tree/master/spring-boot-study-kafka)
+
 # 1 新建 Spring Boot Maven 示例工程项目
 注意：是用来 IDEA 开发工具
 1. `File > New > Project`，如下图选择 `Spring Initializr` 然后点击 【Next】下一步
