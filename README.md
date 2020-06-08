@@ -63,6 +63,9 @@
 - [Spring Boot 数据库应用 使用Jpa使用教程](https://www.cnblogs.com/fishpro/p/spring-boot-study-jpa.html)
 - [Spring Boot 数据库应用 动态数据源](https://www.cnblogs.com/fishpro/p/spring-boot-study-dynamicdb.html)
 
+
+- [Spring Boot Kafka 入门示例](https://www.cnblogs.com/fishpro/p/12784514.html)
+
 ## Spring Boot 缓存技术
 
 - [Spring Boot 中的缓存应用（上）使用ehcache](https://www.cnblogs.com/fishpro/p/spring-boot-study-ehcache.html)
