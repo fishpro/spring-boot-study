@@ -273,3 +273,74 @@ struct DemoData {
 2020-06-21 18:44:05.808  INFO 7540 --- [     Thread-117] com.fishpro.udpdemo.UDPServer            : =======接收到的UDP信息======
 2020-06-21 18:44:05.808  INFO 7540 --- [     Thread-117] com.fishpro.udpdemo.UDPServer            : =======Process srt2 UTF-8======�Ȁ	
 ```
+
+## 4。3 如何接收 C/C++定义的嵌套结构体
+
+### C/C++
+```c++
+
+typedef uint32_t UINT32;
+typedef uint8_t BYTE;
+struct DemoData {
+	struct Device1 {
+		bool Do[1]; //故障（T：亮  F：灭）
+
+		BYTE Co1[3];//排温 数码管
+		BYTE Co2[3];//滑压 数码管
+		BYTE Co3[3];//助液压 数码管
+		BYTE Co4[3];//主液压 数码管
+		BYTE Co5[3];//交流 数码管
+		BYTE Co6[3];//直流 数码管
+		BYTE Co7;//组别
+		UINT32 Ao[4];
+
+	}Dev1;
+	struct Device2 {
+		UINT32 Ao[4];
+	}Dev2;
+	struct Device3 {
+		bool Do[1]; //故障（T：亮  F：灭）
+	}Dev3;
+
+}DD;
+
+```
+
+### Java
+```java
+
+    /**
+     * 注意下面是嵌套的struct写法
+     * */
+    public static class DemoStruct extends Struct {
+        public final Dev1 dev1 = inner(new Dev1());
+        public final Dev2 dev2 = inner(new Dev2());
+        public final Dev3 dev3 = inner(new Dev3());
+
+
+    }
+
+    public static class Dev1 extends Struct {
+        public final Struct.Bool Do = new Bool();
+        public final Unsigned8[] Col1 = array(new Unsigned8[3]);
+        public final Unsigned8[] Col2 = array(new Unsigned8[3]);
+        public final Unsigned8[] Col3 = array(new Unsigned8[3]);
+        public final Unsigned8[] Col4 = array(new Unsigned8[3]);
+        public final Unsigned8[] Col5 = array(new Unsigned8[3]);
+        public final Unsigned8[] Col6 = array(new Unsigned8[3]);
+        public final Unsigned8 Col7 = new Unsigned8();
+        public final Unsigned32[] Ao = array(new Unsigned32[4]);
+
+    }
+
+    public static class Dev2 extends Struct {
+        public final Unsigned32[] Ao = array(new Unsigned32[4]);
+
+    }
+
+    public static class Dev3 extends Struct {
+        public final Struct.Bool Do = new Bool();
+
+    }
+
+```
