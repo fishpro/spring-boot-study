@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+            name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta name="wap-font-scale" content="no" />
+    <title>testing</title>
+</head>
+<body style="background: none; overflow: hidden;">
+
+<div class="hot-map" id="hot">
+</div>
+
+<script type="text/javascript"
+        th:src="@{/assets/libs/webSocket/jquery.js}"></script>
+<script type="text/javascript"
+        th:src="@{/assets/libs/webSocket/sockjs.min.js}"></script>
+<script type="text/javascript"
+        th:src="@{/assets/libs/webSocket/stomp.min.js}"></script>
+<script type="text/javascript">
+    function connectNotify() {
+        var sock = new SockJS("/endpointChat");
+        var stomp = Stomp.over(sock);
+        stomp.connect('guest', 'guest', function(frame) {
+            stomp.subscribe("/queue/bigtopic/hot", handleNotification);
+        });
+        function handleNotification(message) {
+            $("#hot").append(message+"<br/>");
+            console.log(message);
+        }
+    }
+
+    function handleAjaxResult(result) {
+        //do something
+    }
+
+    $(function() {
+        connectNotify();
+
+    });
+</script>
+
+</body>
+</html>
