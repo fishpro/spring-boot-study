@@ -1,0 +1,25 @@
+server:
+  session-timeout: 7200
+#    tomcat:
+#        max-threads: 1000
+#        min-spare-threads: 30
+  port: 8092
+
+spring:
+  #MQTT配置信息
+  mqtt:
+    #MQTT用户名
+    username: admin
+    #MQTT密码
+    password: public
+    #MQTT服务器 使用
+    url: tcp://127.0.0.1:1883
+    completionTimeout : 3000
+    client:
+      #MQTT-连接服务器默认客户端ID
+      id: mqttId112233
+    default:
+      #MQTT-默认的消息推送主题，实际可在调用接口时指定
+      topic: tcp/TDZN/307P2862
+    topics: topic
+    qosValues: 2,3
