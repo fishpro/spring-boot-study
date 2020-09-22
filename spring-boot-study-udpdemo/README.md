@@ -14,6 +14,21 @@
 
 [本项目源码下载](https://github.com/fishpro/spring-boot-study/tree/master/spring-boot-study-udpdemo)
 
+# 0 补充说明
+
+字节顺序是指占内存多于一个字节类型的数据在内存中的存放顺序，通常有小端、大端两种字节顺序。小端字节序指低字节数据存放在内存低地址处，高字节数据存放在内存高地址处；大端字节序是高字节数据存放在低地址处，低字节数据存放在高地址处。
+
+基于X86平台的PC机是小端字节序的，而有的嵌入式平台则是大端字节序的。
+
+网络协议规定接收到得第一个字节是高字节，存放到低地址，所以发送时会首先去低地址取数据的高字节。
+
+所有网络协议也都是采用big endian的方式来传输数据的。所以有时我们也会把big endian方式称之为网络字节序。当两台采用不同字节序的主机通信时，在发送数据之前都必须经过字节序的转换成为网络字节序后再进行传输。
+
+网络字节顺序是TCP/IP中规定好的一种数据表示格式，它与具体的CPU类型、操作系统等无关，从而可以保证数据在不同主机之间传输时能够被正确解释。网络字节顺序采用big endian排序方式。
+
+C/C++语言编写的程序里数据存储顺序是跟编译平台所在的CPU相关的。在windows的字节序为低字节开头，在linux,unix的字节序为高字节开头。而 
+
+**JAVA编写的程序则唯一采用big endian方式来存储数据，无论平台怎样变化，都是高字节开头。所以JAVA 与 小端排序的VC 需要设置字节顺序为小端排序**
 # 1 新建 Spring Boot Maven 示例工程项目
 注意：是用来 IDEA 开发工具
 1. File > New > Project，如下图选择 `Spring Initializr` 然后点击 【Next】下一步
@@ -154,7 +169,11 @@ public class UDPServer implements ServletContextListener {
                 packet = new DatagramPacket(buffer, buffer.length);
                 //udp message struct
                 DemoStruct message=new DemoStruct();
-                message.setByteBuffer(ByteBuffer.wrap(buffer),0);
+                 //add at 2020-09-22 如果对方是VC window平台那么就要设置 byteOrder 为 小端排序
+                                ByteBuffer byteBuffer=ByteBuffer.wrap(buffer);
+                                byteBuffer.order(ByteOrder.LITTLE_ENDIAN);
+                                message.setByteBuffer(byteBuffer,0);
+                //                message.setByteBuffer(ByteBuffer.wrap(buffer),0);
 
                 try {
                     logger.info("=======此方法在接收到数据报之前会一直阻塞======");
@@ -228,6 +247,13 @@ public class UDPServer implements ServletContextListener {
         public final Unsigned8 Col7=new Unsigned8();
         public final Unsigned32[] Ao=array(new Unsigned32[4]);
 
+        /**
+         *  //add at 2020-09-22 如果对方是VC window平台那么就要设置 byteOrder 为 小端排序
+         * */
+        @Override
+        public ByteOrder byteOrder() {
+            return ByteOrder.LITTLE_ENDIAN;
+        }
     }
 }
 

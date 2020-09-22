@@ -56,7 +56,11 @@ public class UDPServer implements ServletContextListener {
                 packet = new DatagramPacket(buffer, buffer.length);
                 //udp message struct
                 DemoStruct message=new DemoStruct();
-                message.setByteBuffer(ByteBuffer.wrap(buffer),0);
+                //add at 2020-09-22 如果对方是VC window平台那么就要设置 byteOrder 为 小端排序
+                ByteBuffer byteBuffer=ByteBuffer.wrap(buffer);
+                byteBuffer.order(ByteOrder.LITTLE_ENDIAN);
+                message.setByteBuffer(byteBuffer,0);
+//                message.setByteBuffer(ByteBuffer.wrap(buffer),0);
 
                 try {
                     logger.info("=======此方法在接收到数据报之前会一直阻塞======");
@@ -129,6 +133,14 @@ public class UDPServer implements ServletContextListener {
         public final Unsigned8[] Col6=array(new Unsigned8[3]);
         public final Unsigned8 Col7=new Unsigned8();
         public final Unsigned32[] Ao=array(new Unsigned32[4]);
+
+        /**
+         *  //add at 2020-09-22 如果对方是VC window平台那么就要设置 byteOrder 为 小端排序
+         * */
+        @Override
+        public ByteOrder byteOrder() {
+            return ByteOrder.LITTLE_ENDIAN;
+        }
 
     }
 }
