@@ -48,7 +48,7 @@ Redis 接入 Spring Boot 缓存，使用的注解跟 Ehcache 接入缓存的注�
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.44</version>
+            <version>1.2.83</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

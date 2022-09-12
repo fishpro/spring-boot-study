@@ -292,7 +292,7 @@ fastjson 是 阿里巴巴的开源项目。在国内使用非常广泛。
 <dependency>
     <groupId>com.alibaba</groupId>
     <artifactId>fastjson</artifactId>
-    <version>1.2.58</version>
+    <version>1.2.83</version>
 </dependency>
 ```
 

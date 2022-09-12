@@ -67,7 +67,7 @@ Apache Shiro 已经大名鼎鼎，搞 Java 的没有不知道的，这类似于 
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-core</artifactId>
-            <version>1.4.0</version>
+            <version>1.9.1</version>
         </dependency>
         <dependency>
             <groupId>org.apache.shiro</groupId>
@@ -578,7 +578,7 @@ shiro:hasPermission 标签应用在 thymeleaf ，由于涉及到两个框架，�
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-core</artifactId>
-            <version>1.4.0</version>
+            <version>1.9.1</version>
         </dependency>
         <dependency>
             <groupId>org.apache.shiro</groupId>
