@@ -61,11 +61,11 @@
             <groupId>org.springframework.integration</groupId>
             <artifactId>spring-integration-mqtt</artifactId>
         </dependency>
-
+        <!--Bump org.eclipse.paho.client.mqttv3 from 1.2.0 to 1.2.1 in /spring-boot-study-mqtt-->
         <dependency>
             <groupId>org.eclipse.paho</groupId>
             <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
-            <version>1.2.0</version>
+            <version>1.2.1</version>
         </dependency>
 
 
