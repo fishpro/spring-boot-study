@@ -50,11 +50,11 @@
             <artifactId>druid-spring-boot-starter</artifactId>
             <version>1.1.13</version>
         </dependency>
-
+        <!--Bump mybatis from 3.4.4 to 3.5.6 in /spring-boot-study-dynamicdb-->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
-            <version>3.4.4</version>
+            <version>3.5.6</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
