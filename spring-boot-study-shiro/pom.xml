@@ -29,10 +29,11 @@
             <artifactId>shiro-core</artifactId>
             <version>1.9.1</version>
         </dependency>
+        <!--Bump shiro-spring from 1.4.0 to 1.7.1 in /spring-boot-study-shiro-->
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-spring</artifactId>
-            <version>1.4.0</version>
+            <version>1.7.1</version>
         </dependency>
         <!--shiro for thymeleaf 生效需要加入 spring boot 2.x 请使用 2.0.0 版本 否则使用 1.2.1版本-->
         <dependency>
