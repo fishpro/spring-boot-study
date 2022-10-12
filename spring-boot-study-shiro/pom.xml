@@ -27,7 +27,7 @@
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-core</artifactId>
-            <version>1.9.1</version>
+            <version>1.10.0</version>
         </dependency>
         <!--Bump shiro-spring from 1.4.0 to 1.7.1 in /spring-boot-study-shiro-->
         <dependency>
